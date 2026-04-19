@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Shopify</title><meta name="description" content="A Shopify-style dashboard clone for managing sales, orders, and conversion metrics with live updates."><meta name="author" content="Lovable"><meta property="og:title" content="Shopify"><meta property="og:description" content="A Shopify-style dashboard clone for managing sales, orders, and conversion metrics with live updates."><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@Lovable"><meta name="twitter:title" content="Shopify"><meta name="twitter:description" content="A Shopify-style dashboard clone for managing sales, orders, and conversion metrics with live updates."><meta property="og:image" content="images/id-preview-f96e78f5--e216c948-6ce9-45e0-bbdb-57da4e14a48d.lovable.app-1776549101199.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e4cb09ab-a9f9-4d66-bc2c-eb10fce53993/id-preview-f96e78f5--e216c948-6ce9-45e0-bbdb-57da4e14a48d.lovable.app-1776549101199.png"><link rel="modulepreload" href="/assets/index-Cn22zKH_.js"><link rel="modulepreload" href="/assets/index-DfvfKrmb.js"><link rel="stylesheet" href="css/styles-Db9Rl-A7.css">
+<style>
+	@font-face {
+		font-family: 'CameraPlainVariable';
+		src: url('fonts/CameraPlainVariable.woff2') format('woff2');
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg);
+		color: var(--badge-text);
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow);
+		font-size: 12px;
+		font-family: CameraPlainVariable, "CameraPlainVariable Fallback", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--badge-gap);
+		padding: 0 var(--badge-padding);
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+</style>
+<script defer="" src="js/~flock.js" data-proxy-url="/~api/analytics"></script></head><body><!--$--><div class="min-h-screen bg-black"><header class="sticky top-0 z-30 bg-black text-white px-4 pt-3 pb-20"><div class="flex items-center justify-between max-w-2xl mx-auto"><button class="flex items-center gap-2.5 hover:opacity-90 transition-opacity" aria-label="Upload logo"><div class="w-9 h-9 rounded-lg bg-[#5BE3C5] flex items-center justify-center text-black text-xs font-bold overflow-hidden">lar</div><span class="font-semibold text-[15px]">larpify</span></button><input type="file" accept="image/*" class="hidden"><div class="flex items-center gap-3"><button class="p-1.5 hover:bg-white/10 rounded-full transition-colors" aria-label="Notifications"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell w-5 h-5" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg></button><div class="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-xs font-semibold">EC</div></div></div></header><main class="bg-white rounded-t-3xl -mt-12 min-h-screen pb-32 relative shadow-2xl"><div class="max-w-2xl mx-auto px-5 pt-5"><div class="flex items-center gap-2 flex-wrap"><div class="relative"><button class="flex items-center gap-1.5 bg-[var(--chip-bg)] px-3 py-1.5 rounded-lg text-sm font-medium">Last 12 hours<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="flex items-center gap-2 bg-[var(--chip-bg)] px-3 py-1.5 rounded-lg text-sm"><span class="relative flex w-2 h-2"><span class="animate-ping absolute inset-0 rounded-full bg-[var(--live-green)] opacity-75"></span><span class="relative rounded-full w-2 h-2 bg-[var(--live-green)]"></span></span><span class="inline-flex items-baseline font-medium"><span contenteditable="true" class="outline-none focus:bg-[var(--chip-bg)] focus:rounded px-0.5 whitespace-nowrap" spellcheck="false"></span></span><span class="text-gray-600">visitors</span></div><button class="ml-auto flex items-center gap-1.5 border border-[var(--muted-line)] px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-50"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-cw w-3.5 h-3.5" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>Report</button></div><div class="mt-5 touch-pan-y cursor-grab active:cursor-grabbing" draggable="false" style="-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:pan-y"><div class="flex flex-row flex-nowrap gap-4 overflow-hidden"><div class="flex-1 min-w-0 text-left" style="opacity:1;transform:none"><div class="text-xs truncate text-black">Total sales</div><div class="text-[20px] mt-1 whitespace-nowrap inline-flex items-baseline font-normal tracking-tight text-black "><span class="select-none">$</span><span class="inline-flex items-baseline "><span contenteditable="true" class="outline-none focus:bg-[var(--chip-bg)] focus:rounded px-0.5 whitespace-nowrap" spellcheck="false"></span></span></div></div><div class="flex-1 min-w-0 text-right" style="opacity:0;transform:translateX(20px)"><div class="text-xs truncate text-gray-400">Orders</div><div class="text-[20px] mt-1 whitespace-nowrap inline-flex items-baseline font-normal tracking-tight text-gray-400 justify-end"><span class="inline-flex items-baseline "><span contenteditable="true" class="outline-none focus:bg-[var(--chip-bg)] focus:rounded px-0.5 whitespace-nowrap" spellcheck="false"></span></span></div></div><div class="flex-1 min-w-0 text-right" style="opacity:0;transform:translateX(20px)"><div class="text-xs truncate text-gray-400">Conversion rate</div><div class="text-[20px] mt-1 whitespace-nowrap inline-flex items-baseline font-normal tracking-tight text-gray-400 justify-end"><span class="inline-flex items-baseline "><span contenteditable="true" class="outline-none focus:bg-[var(--chip-bg)] focus:rounded px-0.5 whitespace-nowrap" spellcheck="false"></span></span><span class="select-none">%</span></div></div></div><div class="flex justify-center gap-1.5 mt-3"><button class="h-1.5 rounded-full transition-all w-5 bg-black" aria-label="Show metric 1"></button><button class="h-1.5 rounded-full transition-all w-1.5 bg-gray-300" aria-label="Show metric 2"></button><button class="h-1.5 rounded-full transition-all w-1.5 bg-gray-300" aria-label="Show metric 3"></button><button class="h-1.5 rounded-full transition-all w-1.5 bg-gray-300" aria-label="Show metric 4"></button><button class="h-1.5 rounded-full transition-all w-1.5 bg-gray-300" aria-label="Show metric 5"></button></div></div><div class="mt-4 touch-pan-y" draggable="false" style="-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:pan-y"><svg viewBox="0 0 700 220" class="w-full h-auto"><text x="0" y="20" class="fill-gray-400" font-size="12">$1.2K</text><text x="0" y="115" class="fill-gray-400" font-size="12">$600</text><text x="0" y="205" class="fill-gray-400" font-size="12">$0</text><line x1="50" y1="20" x2="700" y2="20" stroke="#e5e7eb" stroke-dasharray="2 4"></line><line x1="50" y1="115" x2="700" y2="115" stroke="#e5e7eb" stroke-dasharray="2 4"></line><line x1="50" y1="205" x2="700" y2="205" stroke="#e5e7eb" stroke-dasharray="2 4"></line><g transform="translate(50, 20)"><path d="M 0,57.505370644198734 C 4.861111111111111,60.126733023603734 19.444444444444443,70.44678147278374 29.166666666666664,73.23354492062873 C 38.888888888888886,76.02030836847372 48.61111111111111,74.94507432639465 58.33333333333333,74.2259513312687 C 68.05555555555556,73.50682833614276 77.77777777777777,67.65878506008524 87.5,68.91880694987304 C 97.22222222222223,70.17882883966085 106.94444444444443,75.11176824813919 116.66666666666666,81.78608266999557 C 126.38888888888889,88.46039709185195 136.11111111111111,102.48300443931379 145.83333333333334,108.96469348101131 C 155.55555555555557,115.44638252270883 165.27777777777777,120.94100277855765 175,120.6762169201807 C 184.72222222222223,120.41143106180377 194.44444444444446,111.85847450183337 204.16666666666669,107.37597833074969 C 213.8888888888889,102.89348215966601 223.6111111111111,95.36367632989662 233.33333333333331,93.78123989367865 C 243.05555555555554,92.19880345746067 252.77777777777777,96.36092048423839 262.5,97.88135971344181 C 272.22222222222223,99.40179894264523 281.94444444444446,104.50686649224414 291.6666666666667,102.9038752688992 C 301.3888888888889,101.30088404555426 311.1111111111111,94.19798977615268 320.8333333333333,88.26341237337213 C 330.55555555555554,82.32883497059159 340.27777777777777,70.63744035946883 350,67.2964108522159 C 359.72222222222223,63.95538134496298 369.4444444444444,64.58076121129557 379.16666666666663,68.2172353298546 C 388.88888888888886,71.85370944841364 398.61111111111114,83.61283453983397 408.33333333333337,89.11525556357012 C 418.0555555555556,94.61767658730626 427.77777777777777,100.2426310323071 437.5,101.2317614722715 C 447.22222222222223,102.2208919122359 456.9444444444444,96.40398588189883 466.66666666666663,95.05003820335654 C 476.38888888888886,93.69609052481424 486.11111111111114,90.77809923260197 495.83333333333337,93.10807540101769 C 505.5555555555556,95.4380515694334 515.2777777777778,104.26368078194056 525,109.02989521385078 C 534.7222222222222,113.79610964576099 544.4444444444443,121.82289625581389 554.1666666666666,121.70536199247893 C 563.8888888888889,121.58782772914397 573.6111111111111,114.9450190846357 583.3333333333334,108.32468963384105 C 593.0555555555557,101.70436018304639 602.7777777777778,88.11137340230424 612.5,81.98338528771099 C 622.2222222222222,75.85539717311774 631.9444444444443,72.40170247634208 641.6666666666666,71.55676094628154 C 651.3888888888889,70.711819416221 661.1111111111111,76.6580927930737 670.8333333333334,76.91373610734772 C 680.5555555555557,77.16937942162173 695.1388888888889,73.72780671116266 700,73.09062083192565" fill="none" stroke="#bfdbfe" stroke-width="2.5" stroke-dasharray="0 1" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dashoffset="0"></path><path d="M 0,133.00947454862393 C 4.861111111111111,130.9469743426629 19.444444444444443,126.02380130346972 29.166666666666664,120.63447331285779 C 38.888888888888886,115.24514532224586 48.61111111111111,104.39489323718324 58.33333333333333,100.67350660495238 C 68.05555555555556,96.95211997272152 77.77777777777777,98.20038366938955 87.5,98.30615351947263 C 97.22222222222223,98.41192336955571 106.94444444444443,103.7739448677658 116.66666666666666,101.30812570545085 C 126.38888888888889,98.84230654313589 136.11111111111111,91.61706595685838 145.83333333333334,83.51123854558293 C 155.55555555555557,75.40541113430747 165.27777777777777,59.546137406110155 175,52.6731612377981 C 184.72222222222223,45.80018506948604 194.44444444444446,41.09071563809555 204.16666666666669,42.27338153571059 C 213.8888888888889,43.45604743332563 223.6111111111111,54.09535890303343 233.33333333333331,59.76915662348833 C 243.05555555555554,65.44295434394323 252.77777777777777,73.85586929514987 262.5,76.31616785843997 C 272.22222222222223,78.77646642173006 281.94444444444446,74.74324447895587 291.6666666666667,74.53094800322887 C 301.3888888888889,74.31865152750187 311.1111111111111,71.08002260695213 320.8333333333333,75.04238900407799 C 330.55555555555554,79.00475540120385 340.27777777777777,89.81256507023637 350,98.30514638598407 C 359.72222222222223,106.79772770173177 369.4444444444444,121.18635716248231 379.16666666666663,125.99787689856421 C 388.88888888888886,130.80939663464613 398.61111111111114,130.3847008076941 408.33333333333337,127.17426480247553 C 418.0555555555556,123.96382879725698 427.77777777777777,111.86495225459552 437.5,106.73526086725293 C 447.22222222222223,101.60556947991034 456.9444444444444,96.96976010390925 466.66666666666663,96.39611647841996 C 476.38888888888886,95.82247285293066 486.11111111111114,102.49669962389235 495.83333333333337,103.29339911431717 C 505.5555555555556,104.09009860474198 515.2777777777778,105.39033632525759 525,101.17631342096882 C 534.7222222222222,96.96229051668006 544.4444444444443,84.88179297677351 554.1666666666666,78.00926168858456 C 563.8888888888889,71.1367304003956 573.6111111111111,61.13305792492002 583.3333333333334,59.941125691835076 C 593.0555555555557,58.749193458750135 602.7777777777778,65.19078795483868 612.5,70.85766829007491 C 622.2222222222222,76.52454862531114 631.9444444444443,89.28772575110824 641.6666666666666,93.94240770325243 C 651.3888888888889,98.59708965539662 661.1111111111111,99.56270926459638 670.8333333333334,98.78576000294007 C 680.5555555555557,98.00881074128375 695.1388888888889,90.86488677825211 700,89.28071213331452" fill="none" stroke="#1ea7fd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dashoffset="0" stroke-dasharray="0 1"></path></g></svg><div class="flex justify-between text-xs text-gray-400 mt-1 px-12"><span>6:00 AM</span><span>11:00 AM</span><span>4:00 PM</span></div></div><div class="mt-6 grid grid-cols-2 gap-3"><div class="bg-[var(--chip-bg)] rounded-xl p-4 flex items-start justify-between"><div><div class="text-xl font-normal">2</div><div class="text-sm font-normal mt-0.5 text-gray-600">Orders to fulfill</div></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-inbox w-5 h-5 text-gray-500" aria-hidden="true"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg></div><div class="bg-[var(--chip-bg)] rounded-xl p-4 flex items-start justify-between"><div><div class="text-xl font-normal">1</div><div class="text-sm font-normal mt-0.5 text-gray-600">Payment to capture</div></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag w-5 h-5 text-gray-500" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle></svg></div></div><div class="mt-6"><div class="flex items-start justify-between"><h3 class="text-base font-bold">Start selling and earn 1% back in credits</h3><button class="p-1 -mr-1 text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis w-5 h-5" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button></div><p class="text-sm text-gray-600 mt-2 leading-relaxed">You're earning 1% back in credits on every sale, up to $13,000. Credits apply to your bill automatically.</p><button class="mt-4 w-full border border-[var(--muted-line)] rounded-lg py-3 text-sm font-semibold hover:bg-gray-50">Learn more</button></div></div></main><nav class="fixed bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2"><button class="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search w-5 h-5" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></button><div class="bg-white shadow-lg rounded-full px-3 py-2 flex items-center gap-1"><button class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house w-5 h-5 fill-current" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></button><button class="w-10 h-10 rounded-full flex items-center justify-center text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-inbox w-5 h-5" aria-hidden="true"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg></button><button class="w-10 h-10 rounded-full flex items-center justify-center text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag w-5 h-5" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle></svg></button><button class="w-10 h-10 rounded-full flex items-center justify-center text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-5 h-5" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div><button class="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-5 h-5" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg></button></nav></div><!--/$--><script type="module" async="">import("/assets/index-Cn22zKH_.js")</script>
+<aside id="lovable-badge" role="complementary" dir="ltr" lang="en" aria-label="Edit with Lovable">
+	<a id="lovable-badge-cta" target="_blank" href="https://lovable.dev/projects/e216c948-6ce9-45e0-bbdb-57da4e14a48d?utm_source=lovable-badge" rel="noopener" aria-label="Edit with Lovable">
+		<span id="lovable-badge-text">Edit with</span>
+		<svg xmlns="http://www.w3.org/2000/svg" width="52" height="16" fill="none" viewBox="0 0 52 16">
+  <path fill="#FCFBF8" fill-rule="evenodd" d="M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z" clip-rule="evenodd"></path>
+  <path fill="#FCFBF8" d="m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z"></path>
+  <path fill="url(#a)" fill-rule="evenodd" d="M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z" clip-rule="evenodd"></path>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)" gradientUnits="userSpaceOnUse">
+      <stop offset=".106" stop-color="#FE7B02"></stop>
+      <stop offset=".394" stop-color="#FE3F21"></stop>
+      <stop offset=".608" stop-color="#F858BC"></stop>
+      <stop offset=".929" stop-color="#575ECF"></stop>
+    </radialGradient>
+  </defs>
+</svg>
+
+
+	</a>
+	
+	<span id="lovable-badge-divider" aria-hidden="true"></span>
+	
+	<button id="lovable-badge-close" aria-label="Dismiss" title="Dismiss" type="button">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+			<path d="M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z"></path>
+		</svg>
+	</button>
+</aside>
+<script>
+	// Don't show the lovable-badge if the page is in an iframe or if it's being rendered by puppeteer (screenshot service)
+	if (window.self !== window.top || navigator.userAgent.includes('puppeteer')) {
+		// the page is in an iframe
+		var badge = document.getElementById('lovable-badge');
+		if (badge) {
+			badge.style.display = 'none';
+		}
+	}
+
+	// Add click event listener to close button with animation
+	var closeButton = document.getElementById('lovable-badge-close');
+	if (closeButton) {
+		closeButton.addEventListener('click', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			var badge = document.getElementById('lovable-badge');
+			if (badge) {
+				badge.classList.add('closing');
+				setTimeout(function() {
+					if (badge) {
+						badge.style.display = 'none';
+					}
+				}, 240);
+			}
+		});
+	}
+</script>
+</body></html>
